@@ -1,0 +1,1432 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula 18: Pedidos Formais e Possibilidades – "May" e "Might" (Mobile Optimized)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+            --accent-color: #e74c3c;
+            --bg-light: #f8f9fa;
+            --text-color: #333;
+            --card-bg: #ffffff;
+            --border-radius: 12px;
+            --shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        /* Reset Global */
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f2f5;
+            color: var(--text-color);
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 15px;
+        }
+
+        /* Navigation Button */
+        .nav-btn {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 12px 20px;
+            text-decoration: none;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-weight: 600;
+            transition: background 0.2s;
+            text-align: center;
+            width: 100%;
+        }
+
+        .nav-btn:hover {
+            background-color: #1a252f;
+        }
+
+        /* Headers */
+        h1 {
+            text-align: center;
+            color: var(--secondary-color);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.3;
+        }
+
+        h2, h3 {
+            color: var(--secondary-color);
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 8px;
+            margin-top: 30px;
+            font-size: 1.4rem;
+        }
+
+        h4 {
+            color: var(--primary-color);
+            margin-top: 20px;
+        }
+
+        /* Cards & Sections */
+        .theme-intro, .nota-gramatical, .nota-dica, .extra-task, .card, .tarefa-extra, .secao-exercicios {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow);
+            border-left: 5px solid var(--primary-color);
+            width: 100%;
+        }
+
+        .nota-dica { border-left-color: #16a085; background-color: #e8f6f3; }
+        .extra-task, .tarefa-extra { border-left-color: #9b59b6; background-color: #f5eef8; }
+        .nota-gramatical { border-left-color: #f39c12; background-color: #fffbf0; }
+
+        /* Mobile Optimized Tables */
+        .mobile-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .mobile-table th {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+
+        .mobile-table td {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+            vertical-align: top;
+        }
+
+        .mobile-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* Specific Column Styles */
+        .col-english {
+            width: 45%;
+            font-weight: 600;
+            color: var(--secondary-color);
+        }
+
+        .col-details {
+            width: 55%;
+        }
+
+        /* Stacked Details Styles */
+        .ipa-text {
+            font-family: 'Courier New', monospace;
+            color: #e67e22;
+            font-size: 0.9em;
+            display: block;
+            margin-bottom: 4px;
+            word-wrap: break-word;
+        }
+
+        .pronunciation-text {
+            font-style: italic;
+            color: #7f8c8d;
+            font-size: 0.85em;
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        .translation-text {
+            color: #555;
+            font-size: 0.95em;
+            display: block;
+            border-top: 1px dashed #eee;
+            padding-top: 4px;
+        }
+
+        .example-word {
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        /* Audio Button */
+        .audio-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.2rem;
+            margin-left: 5px;
+            padding: 5px;
+            border-radius: 50%;
+            transition: background 0.2s;
+            vertical-align: middle;
+        }
+
+        .audio-btn:hover {
+            background-color: rgba(52, 152, 219, 0.1);
+        }
+        
+        .audio-btn:active {
+            transform: scale(0.95);
+        }
+
+        /* Vocab Layout */
+        .vocab-item {
+            margin-bottom: 15px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 15px;
+        }
+
+        .vocab-word {
+            font-size: 1.1em;
+            color: var(--secondary-color);
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .vocab-details {
+            margin-top: 5px;
+            padding-left: 10px;
+            border-left: 3px solid #ddd;
+        }
+
+        /* Exercises */
+        .fill-in-blank {
+            color: var(--primary-color);
+            font-weight: bold;
+            display: inline-block;
+            min-width: 60px;
+            text-align: center;
+            border-bottom: 1px solid var(--primary-color);
+        }
+
+        .exercise-list li {
+            margin-bottom: 12px;
+        }
+
+        /* Gabarito Section */
+        details.gabarito {
+            background-color: #f1f1f1;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+        details.gabarito summary {
+            font-weight: bold;
+            cursor: pointer;
+            color: var(--secondary-color);
+        }
+
+        .quiz-options { list-style: none; padding: 0; }
+        .quiz-options li { margin-bottom: 8px; padding: 8px; background: white; border-radius: 4px; }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+            color: #7f8c8d;
+        }
+
+        /* Small screen adjustments */
+        @media (max-width: 600px) {
+            .mobile-table thead { display: none; }
+            .mobile-table td { 
+                display: block; 
+                width: 100%; 
+                padding: 10px 15px;
+            }
+            .mobile-table .col-english {
+                background-color: #f9f9f9;
+                padding-top: 15px;
+                border-bottom: none;
+            }
+            .mobile-table .col-details {
+                padding-bottom: 15px;
+                border-bottom: 2px solid #e0e0e0;
+            }
+            
+            .container { padding: 10px; }
+            h1 { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <a href="#" class="nav-btn">⬅️ Voltar ao Menu</a>
+
+    <h1>Aula 18: Pedidos Formais e Possibilidades – "May" e "Might" <span style="font-size:1.2em">🧐🎩</span><br><small>(Formal Requests and Possibilities – "May" and "Might")</small></h1>
+
+    <div class="theme-intro">
+        <p>Olá! Bem-vindo(a) à Aula 18! ✨</p>
+        <p>Continuando nossa exploração dos verbos modais, hoje vamos focar em <strong>"may"</strong> e <strong>"might"</strong>. Aprenderemos a usá-los para fazer <strong>pedidos formais</strong>, especialmente em <strong>situações de trabalho ou atendimento ao cliente</strong>, e para <strong>especular sobre possibilidades futuras</strong>. Prepare-se para adicionar um toque de formalidade e expressar incertezas com elegância! 👔🤔🌦️</p>
+    </div>
+
+    <!-- Section 18.1 Formal Permission -->
+    <section>
+        <h2>18.1 Permissão Formal: "May I...?" (Seria possível...?) 🙋‍♂️</h2>
+        <div class="card">
+            <p>Enquanto "Can I...?" é usado para pedir permissão de forma informal (como vimos na Aula 17), <strong>"May I...?"</strong> é a forma mais <strong>formal e educada</strong> de pedir permissão.</p>
+            <p><strong>Estrutura:</strong> May + Sujeito (geralmente "I" ou "we") + Verbo (forma base) + Complemento?</p>
+            <p>É comum usar "May I...?" em situações profissionais, ao falar com autoridades, ou quando queremos ser extrapolidos.</p>
+            <ul>
+                <li><span class="example-word">May I</span> come in? <button class="audio-btn" onclick="playAudio('May I come in?')">🔊</button>
+                    <div class="vocab-details">
+                        <span class="ipa-text">/meɪ aɪ kʌm ɪn/</span>
+                        <span class="pronunciation-text">(MÊI ái CÂM ÊN?)</span>
+                        <span class="translation-text">Posso entrar? / Seria possível eu entrar?</span>
+                    </div>
+                </li>
+                <br>
+                <li><span class="example-word">May I</span> ask a question, please? <button class="audio-btn" onclick="playAudio('May I ask a question, please?')">🔊</button>
+                    <div class="vocab-details">
+                        <span class="ipa-text">/meɪ aɪ æsk ə ˈkwestʃən pliːz/</span>
+                        <span class="pronunciation-text">(MÊI ái ÉSK ã CUÉS-tchãn, PLÍIZ?)</span>
+                        <span class="translation-text">Posso fazer uma pergunta, por favor?</span>
+                    </div>
+                </li>
+                <br>
+                <li><span class="example-word">May I</span> use your phone for a moment? <button class="audio-btn" onclick="playAudio('May I use your phone for a moment?')">🔊</button>
+                    <div class="vocab-details">
+                        <span class="translation-text">Eu poderia usar seu telefone por um momento?</span>
+                    </div>
+                </li>
+                <br>
+                <li><span class="example-word">May we</span> suggest an alternative solution? <button class="audio-btn" onclick="playAudio('May we suggest an alternative solution?')">🔊</button>
+                    <div class="vocab-details">
+                        <span class="translation-text">Nós poderíamos sugerir uma solução alternativa?</span>
+                    </div>
+                </li>
+            </ul>
+            <p style="margin-top: 10px; font-size: 0.9em; color: #555;">Para conceder permissão formalmente, você pode dizer: "Yes, you may." Para negar: "No, you may not." (ou, de forma mais suave, "I'm afraid not." ou "I'd rather you didn't.").</p>
+        </div>
+    </section>
+
+    <!-- Section 18.2 Possibility -->
+    <section>
+        <h2>18.2 Expressando Possibilidade Presente ou Futura: "May" e "Might" (Pode ser que...) 🤔💭</h2>
+        <div class="card">
+            <p>Tanto <strong>"may"</strong> (<code>/meɪ/</code> - MÊI) quanto <strong>"might"</strong> (<code>/maɪt/</code> - MÁIT) são usados para expressar possibilidade no presente ou no futuro. Eles indicam que algo é possível, mas não certo. Em muitos casos, são intercambiáveis.</p>
+            <p><strong>Estrutura:</strong> Sujeito + may/might + Verbo (forma base) + Complemento.</p>
+            <ul>
+                <li>It <span class="example-word">may rain</span> tomorrow. <button class="audio-btn" onclick="playAudio('It may rain tomorrow.')">🔊</button>
+                    <div class="vocab-details">
+                        <span class="ipa-text">/ɪt meɪ reɪn təˈmɑːroʊ/</span>
+                        <span class="pronunciation-text">(ÊT mêi RÊIN tã-MÓ-rôu)</span>
+                        <span class="translation-text">Pode ser que chova amanhã. / Talvez chova amanhã.</span>
+                    </div>
+                </li>
+                <br>
+                <li>He <span class="example-word">might be</span> late for the meeting. <button class="audio-btn" onclick="playAudio('He might be late for the meeting.')">🔊</button>
+                    <div class="vocab-details">
+                        <span class="ipa-text">/hiː maɪt biː leɪt fər ðə ˈmiːtɪŋ/</span>
+                        <span class="pronunciation-text">(RÍI MÁIT bíi LÊIT fór dhã MÍI-rin)</span>
+                        <span class="translation-text">Pode ser que ele se atrase para a reunião.</span>
+                    </div>
+                </li>
+                <br>
+                <li>We <span class="example-word">may go</span> to the new restaurant tonight. <button class="audio-btn" onclick="playAudio('We may go to the new restaurant tonight.')">🔊</button>
+                    <div class="vocab-details">
+                        <span class="translation-text">Pode ser que nós vamos ao novo restaurante hoje à noite.</span>
+                    </div>
+                </li>
+                <br>
+                <li>She <span class="example-word">might not agree</span> with our proposal. <button class="audio-btn" onclick="playAudio('She might not agree with our proposal.')">🔊</button>
+                    <div class="vocab-details">
+                        <span class="translation-text">Pode ser que ela não concorde com nossa proposta.</span>
+                    </div>
+                </li>
+            </ul>
+            <p style="margin-top: 10px; font-size: 0.9em; color: #555;">Para a forma negativa, usamos <strong>may not</strong> ou <strong>might not</strong>.</p>
+        </div>
+    </section>
+
+    <!-- Section 18.3 Differences -->
+    <section>
+        <h2>18.3 Diferenças Sutis entre "May" e "Might" 🧐</h2>
+        <div class="card">
+            <p>Embora frequentemente intercambiáveis para expressar possibilidade, existem algumas nuances:</p>
+            <ul>
+                <li><strong>Probabilidade:</strong> "May" pode indicar uma probabilidade ligeiramente maior do que "might" (ex: 50% vs 30%).</li>
+                <li><strong>Formalidade:</strong> "May" soa um pouco mais formal.</li>
+                <li><strong>Hipotético:</strong> "Might" é preferido para situações mais hipotéticas ou condicionais (ex: "If you studied, you might pass").</li>
+                <li><strong>Permissão:</strong> "May I...?" é o padrão formal. "Might I...?" é extremamente formal e raro.</li>
+            </ul>
+            <div class="nota-dica">
+                <h4>Na Dúvida, Ambos Funcionam! 💡</h4>
+                <p>Para expressar possibilidade futura ou presente, na maioria das vezes, você pode usar tanto "may" quanto "might" sem grande diferença de significado.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 18.4 Practice Phrases -->
+    <section>
+        <h2>18.4 Prática: Criando Frases para Pedir Permissão e Discutir Possibilidades ✍️</h2>
+        
+        <!-- Table 1: Affirmative Phrases (May/Might) -->
+        <h4>Frases Afirmativas com "May" e "Might" (Possibilidade Futura/Presente)</h4>
+        <table class="mobile-table">
+            <thead>
+                <tr>
+                    <th>Inglês</th>
+                    <th>Detalhes (Fonética & Tradução)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="col-english">
+                        The client <span class="example-word">may arrive</span> a bit late for the meeting.
+                        <button class="audio-btn" onclick="playAudio('The client may arrive a bit late for the meeting.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/ðə ˈklaɪənt meɪ əˈraɪv ə bɪt leɪt fər ðə ˈmiːtɪŋ/</span>
+                        <span class="pronunciation-text">(dhã CLÁI-ãnt mêi ã-RÁIV ã BÊT LÊIT fór dhã MÍI-rin)</span>
+                        <span class="translation-text">O cliente pode chegar um pouco atrasado para a reunião.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        We <span class="example-word">might need</span> more time to finish this report.
+                        <button class="audio-btn" onclick="playAudio('We might need more time to finish this report.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/wiː maɪt niːd mɔːr taɪm tə ˈfɪnɪʃ ðɪs rɪˈpɔːrt/</span>
+                        <span class="pronunciation-text">(UÍI MÁIT NÍID MÓR TÁIM tã FÊ-nêsh DHÊS ri-PÓRT)</span>
+                        <span class="translation-text">Nós talvez precisemos de mais tempo para terminar este relatório.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        This new strategy <span class="example-word">may improve</span> our sales.
+                        <button class="audio-btn" onclick="playAudio('This new strategy may improve our sales.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/ðɪs nuː ˈstrætədʒi meɪ ɪmˈpruːv aʊər seɪlz/</span>
+                        <span class="pronunciation-text">(DHÊS NÚU STRÉ-tã-dji mêi em-PRÚUV áu-ãr SÊILZ)</span>
+                        <span class="translation-text">Esta nova estratégia pode melhorar nossas vendas.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        He <span class="example-word">might not accept</span> the job offer.
+                        <button class="audio-btn" onclick="playAudio('He might not accept the job offer.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/hiː maɪt nɑːt əkˈsept ðə dʒɑːb ˈɔːfər/</span>
+                        <span class="pronunciation-text">(RÍI MÁIT NÓT ãk-SÉPT dhã DJÓB Ó-fãr)</span>
+                        <span class="translation-text">Pode ser que ele não aceite a oferta de emprego.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        The weather forecast says it <span class="example-word">may be</span> windy tomorrow.
+                        <button class="audio-btn" onclick="playAudio('The weather forecast says it may be windy tomorrow.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/ðə ˈweðər ˈfɔːrkæst sez ɪt meɪ biː ˈwɪndi təˈmɑːroʊ/</span>
+                        <span class="pronunciation-text">(dhã UÉ-dhãr FÓR-kést SÉZ êt mêi bíi UÊN-di tã-MÓ-rôu)</span>
+                        <span class="translation-text">A previsão do tempo diz que pode ventar amanhã.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        She <span class="example-word">might call</span> later to discuss the project details.
+                        <button class="audio-btn" onclick="playAudio('She might call later to discuss the project details.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/ʃiː maɪt kɔːl ˈleɪtər tə dɪˈskʌs ðə ˈprɑːdʒekt dɪˈteɪlz/</span>
+                        <span class="pronunciation-text">(XÍI MÁIT CÓL LÊI-tãr tã dĩ-SCÂS dhã PRÓ-djekt dĩ-TÊI-õlz)</span>
+                        <span class="translation-text">Pode ser que ela ligue mais tarde para discutir os detalhes do projeto.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        We <span class="example-word">may have</span> a meeting with the new clients next week.
+                        <button class="audio-btn" onclick="playAudio('We may have a meeting with the new clients next week.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/wiː meɪ hæv ə ˈmiːtɪŋ wɪð ðə nuː ˈklaɪənts nekst wiːk/</span>
+                        <span class="pronunciation-text">(UÍI mêi RÉV ã MÍI-rin uêDH dhã NÚU CLÁI-ãnts NÉKST UÍIK)</span>
+                        <span class="translation-text">Nós talvez tenhamos uma reunião com os novos clientes na próxima semana.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        This problem <span class="example-word">might be</span> more complicated than we think.
+                        <button class="audio-btn" onclick="playAudio('This problem might be more complicated than we think.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/ðɪs ˈprɑːbləm maɪt biː mɔːr ˈkɑːmplɪkeɪtɪd ðæn wiː θɪŋk/</span>
+                        <span class="pronunciation-text">(DHÊS PRÓ-blãm MÁIT bíi MÓR CÓM-plĩ-kei-têd DHÉN uíi THÊNK)</span>
+                        <span class="translation-text">Este problema pode ser mais complicado do que pensamos.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        They <span class="example-word">may not finish</span> the report by the deadline.
+                        <button class="audio-btn" onclick="playAudio('They may not finish the report by the deadline.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/ðeɪ meɪ nɑːt ˈfɪnɪʃ ðə rɪˈpɔːrt baɪ ðə ˈdedlaɪn/</span>
+                        <span class="pronunciation-text">(DHÊI mêi NÓT FÊ-nêsh dhã ri-PÓRT bái dhã DÉD-láin)</span>
+                        <span class="translation-text">Pode ser que eles não terminem o relatório até o prazo.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        I <span class="example-word">might take</span> a different approach to this task.
+                        <button class="audio-btn" onclick="playAudio('I might take a different approach to this task.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/aɪ maɪt teɪk ə ˈdɪfrənt əˈproʊtʃ tə ðɪs tæsk/</span>
+                        <span class="pronunciation-text">(ÁI MÁIT TÊIK ã DÊ-frãnt ã-PRÔUTCH tã DHÊS TÉSK)</span>
+                        <span class="translation-text">Eu talvez adote uma abordagem diferente para esta tarefa.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        The package <span class="example-word">may arrive</span> this afternoon.
+                        <button class="audio-btn" onclick="playAudio('The package may arrive this afternoon.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/ðə ˈpækɪdʒ meɪ əˈraɪv ðɪs ˌæftərˈnuːn/</span>
+                        <span class="pronunciation-text">(dhã PÉ-kêdj mêi ã-RÁIV dhês éf-tãr-NÚUN)</span>
+                        <span class="translation-text">O pacote pode chegar esta tarde.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        He <span class="example-word">might be</span> in a meeting right now.
+                        <button class="audio-btn" onclick="playAudio('He might be in a meeting right now.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/hiː maɪt biː ɪn ə ˈmiːtɪŋ raɪt naʊ/</span>
+                        <span class="pronunciation-text">(RÍI MÁIT bíi ên ã MÍI-rin ráit NÁU)</span>
+                        <span class="translation-text">Ele pode estar em uma reunião agora.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        You <span class="example-word">might find</span> the keys on the kitchen counter.
+                        <button class="audio-btn" onclick="playAudio('You might find the keys on the kitchen counter.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/juː maɪt faɪnd ðə kiːz ɑːn ðə ˈkɪtʃən ˈkaʊntər/</span>
+                        <span class="pronunciation-text">(IÚU MÁIT FÁIND dhã KÍIZ ón dhã KÊ-tchãn CÁUN-tãr)</span>
+                        <span class="translation-text">Você talvez encontre as chaves no balcão da cozinha.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        This store <span class="example-word">may have</span> what you are looking for.
+                        <button class="audio-btn" onclick="playAudio('This store may have what you are looking for.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/ðɪs stɔːr meɪ hæv wʌt juː ɑːr ˈlʊkɪŋ fɔːr/</span>
+                        <span class="pronunciation-text">(DHÊS STÓR mêi RÉV uót iúu ár LÚ-kin fór)</span>
+                        <span class="translation-text">Esta loja pode ter o que você está procurando.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        I <span class="example-word">might go</span> to bed early tonight.
+                        <button class="audio-btn" onclick="playAudio('I might go to bed early tonight.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/aɪ maɪt ɡoʊ tə bed ˈɜːrli təˈnaɪt/</span>
+                        <span class="pronunciation-text">(ÁI MÁIT GÔU tã BÉD ÃR-li tã-NÁIT)</span>
+                        <span class="translation-text">Talvez eu vá para a cama cedo esta noite.</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Table 2: Interrogative Phrases (Permission) -->
+        <h4>Frases Interrogativas com "May" (Permissão Formal)</h4>
+        <table class="mobile-table">
+            <thead>
+                <tr>
+                    <th>Inglês</th>
+                    <th>Detalhes (Fonética & Tradução)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="col-english">
+                        <span class="example-word">May I</span> have your attention, please?
+                        <button class="audio-btn" onclick="playAudio('May I have your attention, please?')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/meɪ aɪ hæv jɔːr əˈtenʃn pliːz/</span>
+                        <span class="pronunciation-text">(MÊI ái RÉV iór ã-TÉN-shãn, PLÍIZ?)</span>
+                        <span class="translation-text">Posso ter sua atenção, por favor?</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        <span class="example-word">May I</span> speak to the manager?
+                        <button class="audio-btn" onclick="playAudio('May I speak to the manager?')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/meɪ aɪ spiːk tə ðə ˈmænɪdʒər/</span>
+                        <span class="pronunciation-text">(MÊI ái SPÍIK tã dhã MÉ-nĩ-djãr?)</span>
+                        <span class="translation-text">Posso falar com o gerente?</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        <span class="example-word">May I</span> suggest an alternative?
+                        <button class="audio-btn" onclick="playAudio('May I suggest an alternative?')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/meɪ aɪ səˈdʒest ən ɔːlˈtɜːrnətɪv/</span>
+                        <span class="pronunciation-text">(MÊI ái sã-DJÉST ãn ól-TÃR-nã-têv?)</span>
+                        <span class="translation-text">Posso sugerir uma alternativa?</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        <span class="example-word">May I</span> see the report?
+                        <button class="audio-btn" onclick="playAudio('May I see the report?')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/meɪ aɪ siː ðə rɪˈpɔːrt/</span>
+                        <span class="pronunciation-text">(MÊI ái SÍI dhã ri-PÓRT?)</span>
+                        <span class="translation-text">Posso ver o relatório?</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        <span class="example-word">May we</span> enter the room now?
+                        <button class="audio-btn" onclick="playAudio('May we enter the room now?')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/meɪ wiː ˈentər ðə ruːm naʊ/</span>
+                        <span class="pronunciation-text">(MÊI uíi ÉN-tãr dhã RÚUM NÁU?)</span>
+                        <span class="translation-text">Podemos entrar na sala agora?</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        <span class="example-word">May I</span> offer you some coffee?
+                        <button class="audio-btn" onclick="playAudio('May I offer you some coffee?')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/meɪ aɪ ˈɔːfər juː sʌm ˈkɔːfi/</span>
+                        <span class="pronunciation-text">(MÊI ái Ó-fãr iúu sâm CÓ-fi?)</span>
+                        <span class="translation-text">Posso lhe oferecer um café?</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        <span class="example-word">May I</span> have a copy of this document?
+                        <button class="audio-btn" onclick="playAudio('May I have a copy of this document?')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/meɪ aɪ hæv ə ˈkɑːpi əv ðɪs ˈdɑːkjəmənt/</span>
+                        <span class="pronunciation-text">(MÊI ái RÉV ã CÓ-pi óv DHÊS DÓ-kiu-mãnt?)</span>
+                        <span class="translation-text">Posso ter uma cópia deste documento?</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        <span class="example-word">May I</span> leave a message for Mr. Smith?
+                        <button class="audio-btn" onclick="playAudio('May I leave a message for Mr. Smith?')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/meɪ aɪ liːv ə ˈmesɪdʒ fər ˈmɪstər smɪθ/</span>
+                        <span class="pronunciation-text">(MÊI ái LÍIV ã MÉ-sêdj fór MÊS-tãr SMÊTH?)</span>
+                        <span class="translation-text">Posso deixar uma mensagem para o Sr. Smith?</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        <span class="example-word">May I</span> know your name, please?
+                        <button class="audio-btn" onclick="playAudio('May I know your name, please?')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/meɪ aɪ noʊ jɔːr neɪm pliːz/</span>
+                        <span class="pronunciation-text">(MÊI ái NÔU iór NÊIM, PLÍIZ?)</span>
+                        <span class="translation-text">Posso saber seu nome, por favor?</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        <span class="example-word">May I</span> sit here?
+                        <button class="audio-btn" onclick="playAudio('May I sit here?')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/meɪ aɪ sɪt hɪr/</span>
+                        <span class="pronunciation-text">(MÊI ái SÊT RÍIR?)</span>
+                        <span class="translation-text">Posso me sentar aqui?</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        <span class="example-word">May I</span> interrupt for a moment?
+                        <button class="audio-btn" onclick="playAudio('May I interrupt for a moment?')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/meɪ aɪ ˌɪntəˈrʌpt fər ə ˈmoʊmənt/</span>
+                        <span class="pronunciation-text">(MÊI ái în-tã-RÂPT fór ã MÔU-mãnt?)</span>
+                        <span class="translation-text">Posso interromper por um momento?</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        <span class="example-word">May I</span> be excused?
+                        <button class="audio-btn" onclick="playAudio('May I be excused?')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/meɪ aɪ biː ɪkˈskjuːzd/</span>
+                        <span class="pronunciation-text">(MÊI ái bíi êks-KIÚUZD?)</span>
+                        <span class="translation-text">Posso me retirar? / Com licença?</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        <span class="example-word">May I</span> take your coat?
+                        <button class="audio-btn" onclick="playAudio('May I take your coat?')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/meɪ aɪ teɪk jɔːr koʊt/</span>
+                        <span class="pronunciation-text">(MÊI ái TÊIK iór CÔUT?)</span>
+                        <span class="translation-text">Posso pegar seu casaco?</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        <span class="example-word">May we</span> proceed?
+                        <button class="audio-btn" onclick="playAudio('May we proceed?')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/meɪ wiː prəˈsiːd/</span>
+                        <span class="pronunciation-text">(MÊI uíi prõ-SÍID?)</span>
+                        <span class="translation-text">Podemos prosseguir?</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        <span class="example-word">May I</span> confirm the details with you?
+                        <button class="audio-btn" onclick="playAudio('May I confirm the details with you?')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/meɪ aɪ kənˈfɜːrm ðə dɪˈteɪlz wɪθ juː/</span>
+                        <span class="pronunciation-text">(MÊI ái cãn-FÃRM dhã dĩ-TÊI-õlz uêth IÚU?)</span>
+                        <span class="translation-text">Posso confirmar os detalhes com você?</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- Vocabulary Section -->
+    <section>
+        <h2>Vocabulário: Situações Formais e Possibilidades 📚</h2>
+        <div class="card">
+            <div class="vocab-item">
+                <div class="vocab-word">
+                    <span class="example-word">Possibility</span> <button class="audio-btn" onclick="playAudio('Possibility')">🔊</button>
+                </div>
+                <div class="vocab-details">
+                    <span class="ipa-text">/ˌpɑːsəˈbɪləti/</span>
+                    <span class="pronunciation-text">(pó-sã-BÊ-lã-ti)</span>
+                    <span class="translation-text">Possibilidade</span>
+                </div>
+            </div>
+
+            <div class="vocab-item">
+                <div class="vocab-word">
+                    <span class="example-word">Uncertainty</span> <button class="audio-btn" onclick="playAudio('Uncertainty')">🔊</button>
+                </div>
+                <div class="vocab-details">
+                    <span class="ipa-text">/ʌnˈsɜːrtnti/</span>
+                    <span class="pronunciation-text">(ãn-SÃR-tãn-ti)</span>
+                    <span class="translation-text">Incerteza</span>
+                </div>
+            </div>
+
+            <div class="vocab-item">
+                <div class="vocab-word">
+                    <span class="example-word">Perhaps</span> <button class="audio-btn" onclick="playAudio('Perhaps')">🔊</button>
+                </div>
+                <div class="vocab-details">
+                    <span class="ipa-text">/pərˈhæps/</span>
+                    <span class="pronunciation-text">(pãr-RÉPS)</span>
+                    <span class="translation-text">Talvez</span>
+                </div>
+            </div>
+
+            <div class="vocab-item">
+                <div class="vocab-word">
+                    <span class="example-word">Probably</span> <button class="audio-btn" onclick="playAudio('Probably')">🔊</button>
+                </div>
+                <div class="vocab-details">
+                    <span class="ipa-text">/ˈprɑːbəbli/</span>
+                    <span class="pronunciation-text">(PRÓ-bã-bli)</span>
+                    <span class="translation-text">Provavelmente</span>
+                </div>
+            </div>
+
+            <div class="vocab-item">
+                <div class="vocab-word">
+                    <span class="example-word">Meeting</span> <button class="audio-btn" onclick="playAudio('Meeting')">🔊</button>
+                </div>
+                <div class="vocab-details">
+                    <span class="ipa-text">/ˈmiːtɪŋ/</span>
+                    <span class="pronunciation-text">(MÍI-rin)</span>
+                    <span class="translation-text">Reunião</span>
+                </div>
+            </div>
+
+            <div class="vocab-item">
+                <div class="vocab-word">
+                    <span class="example-word">Appointment</span> <button class="audio-btn" onclick="playAudio('Appointment')">🔊</button>
+                </div>
+                <div class="vocab-details">
+                    <span class="ipa-text">/əˈpɔɪntmənt/</span>
+                    <span class="pronunciation-text">(ã-PÓINT-mãnt)</span>
+                    <span class="translation-text">Compromisso</span>
+                </div>
+            </div>
+
+            <div class="vocab-item">
+                <div class="vocab-word">
+                    <span class="example-word">Proposal</span> <button class="audio-btn" onclick="playAudio('Proposal')">🔊</button>
+                </div>
+                <div class="vocab-details">
+                    <span class="ipa-text">/prəˈpoʊzl/</span>
+                    <span class="pronunciation-text">(prã-PÔU-zõl)</span>
+                    <span class="translation-text">Proposta</span>
+                </div>
+            </div>
+
+            <div class="vocab-item">
+                <div class="vocab-word">
+                    <span class="example-word">Solution</span> <button class="audio-btn" onclick="playAudio('Solution')">🔊</button>
+                </div>
+                <div class="vocab-details">
+                    <span class="ipa-text">/səˈluːʃn/</span>
+                    <span class="pronunciation-text">(sã-LÚU-shãn)</span>
+                    <span class="translation-text">Solução</span>
+                </div>
+            </div>
+
+            <div class="vocab-item">
+                <div class="vocab-word">
+                    <span class="example-word">Alternative</span> <button class="audio-btn" onclick="playAudio('Alternative')">🔊</button>
+                </div>
+                <div class="vocab-details">
+                    <span class="ipa-text">/ɔːlˈtɜːrnətɪv/</span>
+                    <span class="pronunciation-text">(ól-TÃR-nã-têv)</span>
+                    <span class="translation-text">Alternativa</span>
+                </div>
+            </div>
+
+            <div class="vocab-item">
+                <div class="vocab-word">
+                    <span class="example-word">Report</span> <button class="audio-btn" onclick="playAudio('Report')">🔊</button>
+                </div>
+                <div class="vocab-details">
+                    <span class="ipa-text">/rɪˈpɔːrt/</span>
+                    <span class="pronunciation-text">(ri-PÓRT)</span>
+                    <span class="translation-text">Relatório</span>
+                </div>
+            </div>
+
+            <div class="vocab-item">
+                <div class="vocab-word">
+                    <span class="example-word">Client</span> <button class="audio-btn" onclick="playAudio('Client')">🔊</button>
+                </div>
+                <div class="vocab-details">
+                    <span class="ipa-text">/ˈklaɪənt/</span>
+                    <span class="pronunciation-text">(CLÁI-ãnt)</span>
+                    <span class="translation-text">Cliente</span>
+                </div>
+            </div>
+
+            <div class="vocab-item">
+                <div class="vocab-word">
+                    <span class="example-word">Manager</span> <button class="audio-btn" onclick="playAudio('Manager')">🔊</button>
+                </div>
+                <div class="vocab-details">
+                    <span class="ipa-text">/ˈmænɪdʒər/</span>
+                    <span class="pronunciation-text">(MÉ-nĩ-djãr)</span>
+                    <span class="translation-text">Gerente</span>
+                </div>
+            </div>
+
+            <div class="vocab-item">
+                <div class="vocab-word">
+                    <span class="example-word">Available</span> <button class="audio-btn" onclick="playAudio('Available')">🔊</button>
+                </div>
+                <div class="vocab-details">
+                    <span class="ipa-text">/əˈveɪləbl/</span>
+                    <span class="pronunciation-text">(ã-VÊI-lã-bõl)</span>
+                    <span class="translation-text">Disponível</span>
+                </div>
+            </div>
+
+            <div class="vocab-item">
+                <div class="vocab-word">
+                    <span class="example-word">Busy</span> <button class="audio-btn" onclick="playAudio('Busy')">🔊</button>
+                </div>
+                <div class="vocab-details">
+                    <span class="ipa-text">/ˈbɪzi/</span>
+                    <span class="pronunciation-text">(BÊ-zi)</span>
+                    <span class="translation-text">Ocupado</span>
+                </div>
+            </div>
+
+            <div class="vocab-item">
+                <div class="vocab-word">
+                    <span class="example-word">Suggest</span> <button class="audio-btn" onclick="playAudio('Suggest')">🔊</button>
+                </div>
+                <div class="vocab-details">
+                    <span class="ipa-text">/səˈdʒest/</span>
+                    <span class="pronunciation-text">(sã-DJÉST)</span>
+                    <span class="translation-text">Sugerir</span>
+                </div>
+            </div>
+
+            <div class="vocab-item">
+                <div class="vocab-word">
+                    <span class="example-word">Accept</span> <button class="audio-btn" onclick="playAudio('Accept')">🔊</button>
+                </div>
+                <div class="vocab-details">
+                    <span class="ipa-text">/əkˈsept/</span>
+                    <span class="pronunciation-text">(ãk-SÉPT)</span>
+                    <span class="translation-text">Aceitar</span>
+                </div>
+            </div>
+
+            <div class="vocab-item">
+                <div class="vocab-word">
+                    <span class="example-word">Decline</span> <button class="audio-btn" onclick="playAudio('Decline')">🔊</button>
+                </div>
+                <div class="vocab-details">
+                    <span class="ipa-text">/dɪˈklaɪn/</span>
+                    <span class="pronunciation-text">(dĩ-CLÁIN)</span>
+                    <span class="translation-text">Recusar</span>
+                </div>
+            </div>
+
+            <div class="vocab-item">
+                <div class="vocab-word">
+                    <span class="example-word">Agree</span> <button class="audio-btn" onclick="playAudio('Agree')">🔊</button>
+                </div>
+                <div class="vocab-details">
+                    <span class="ipa-text">/əˈɡriː/</span>
+                    <span class="pronunciation-text">(ã-GRÍI)</span>
+                    <span class="translation-text">Concordar</span>
+                </div>
+            </div>
+
+            <div class="vocab-item">
+                <div class="vocab-word">
+                    <span class="example-word">Disagree</span> <button class="audio-btn" onclick="playAudio('Disagree')">🔊</button>
+                </div>
+                <div class="vocab-details">
+                    <span class="ipa-text">/ˌdɪsəˈɡriː/</span>
+                    <span class="pronunciation-text">(dê-sã-GRÍI)</span>
+                    <span class="translation-text">Discordar</span>
+                </div>
+            </div>
+
+            <div class="vocab-item">
+                <div class="vocab-word">
+                    <span class="example-word">Late</span> <button class="audio-btn" onclick="playAudio('Late')">🔊</button>
+                </div>
+                <div class="vocab-details">
+                    <span class="ipa-text">/leɪt/</span>
+                    <span class="pronunciation-text">(LÊIT)</span>
+                    <span class="translation-text">Atrasado</span>
+                </div>
+            </div>
+
+            <div class="vocab-item">
+                <div class="vocab-word">
+                    <span class="example-word">Early</span> <button class="audio-btn" onclick="playAudio('Early')">🔊</button>
+                </div>
+                <div class="vocab-details">
+                    <span class="ipa-text">/ˈɜːrli/</span>
+                    <span class="pronunciation-text">(ÃR-li)</span>
+                    <span class="translation-text">Adiantado</span>
+                </div>
+            </div>
+
+            <div class="vocab-item">
+                <div class="vocab-word">
+                    <span class="example-word">Postpone</span> <button class="audio-btn" onclick="playAudio('Postpone')">🔊</button>
+                </div>
+                <div class="vocab-details">
+                    <span class="ipa-text">/poʊstˈpoʊn/</span>
+                    <span class="pronunciation-text">(pôust-PÔUN)</span>
+                    <span class="translation-text">Adiar</span>
+                </div>
+            </div>
+
+            <div class="vocab-item">
+                <div class="vocab-word">
+                    <span class="example-word">Cancel</span> <button class="audio-btn" onclick="playAudio('Cancel')">🔊</button>
+                </div>
+                <div class="vocab-details">
+                    <span class="ipa-text">/ˈkænsl/</span>
+                    <span class="pronunciation-text">(KÉN-sõl)</span>
+                    <span class="translation-text">Cancelar</span>
+                </div>
+            </div>
+
+            <div class="vocab-item">
+                <div class="vocab-word">
+                    <span class="example-word">Reschedule</span> <button class="audio-btn" onclick="playAudio('Reschedule')">🔊</button>
+                </div>
+                <div class="vocab-details">
+                    <span class="ipa-text">/ˌriːˈskedʒuːl/</span>
+                    <span class="pronunciation-text">(ríi-SKÉ-dju-õl)</span>
+                    <span class="translation-text">Reagendar</span>
+                </div>
+            </div>
+
+            <div class="vocab-item">
+                <div class="vocab-word">
+                    <span class="example-word">Confirm</span> <button class="audio-btn" onclick="playAudio('Confirm')">🔊</button>
+                </div>
+                <div class="vocab-details">
+                    <span class="ipa-text">/kənˈfɜːrm/</span>
+                    <span class="pronunciation-text">(cãn-FÃRM)</span>
+                    <span class="translation-text">Confirmar</span>
+                </div>
+            </div>
+
+            <div class="vocab-item">
+                <div class="vocab-word">
+                    <span class="example-word">Information</span> <button class="audio-btn" onclick="playAudio('Information')">🔊</button>
+                </div>
+                <div class="vocab-details">
+                    <span class="ipa-text">/ˌɪnfərˈmeɪʃn/</span>
+                    <span class="pronunciation-text">(în-fãr-MÊI-shãn)</span>
+                    <span class="translation-text">Informação</span>
+                </div>
+            </div>
+
+            <div class="vocab-item">
+                <div class="vocab-word">
+                    <span class="example-word">Details</span> <button class="audio-btn" onclick="playAudio('Details')">🔊</button>
+                </div>
+                <div class="vocab-details">
+                    <span class="ipa-text">/dɪˈteɪlz/</span>
+                    <span class="pronunciation-text">(dĩ-TÊI-õlz)</span>
+                    <span class="translation-text">Detalhes</span>
+                </div>
+            </div>
+
+            <div class="vocab-item">
+                <div class="vocab-word">
+                    <span class="example-word">Document</span> <button class="audio-btn" onclick="playAudio('Document')">🔊</button>
+                </div>
+                <div class="vocab-details">
+                    <span class="ipa-text">/ˈdɑːkjəmənt/</span>
+                    <span class="pronunciation-text">(DÓ-kiu-mãnt)</span>
+                    <span class="translation-text">Documento</span>
+                </div>
+            </div>
+
+            <div class="vocab-item">
+                <div class="vocab-word">
+                    <span class="example-word">Message</span> <button class="audio-btn" onclick="playAudio('Message')">🔊</button>
+                </div>
+                <div class="vocab-details">
+                    <span class="ipa-text">/ˈmesɪdʒ/</span>
+                    <span class="pronunciation-text">(MÉ-sêdj)</span>
+                    <span class="translation-text">Mensagem</span>
+                </div>
+            </div>
+
+            <div class="vocab-item">
+                <div class="vocab-word">
+                    <span class="example-word">Weather forecast</span> <button class="audio-btn" onclick="playAudio('Weather forecast')">🔊</button>
+                </div>
+                <div class="vocab-details">
+                    <span class="ipa-text">/ˈweðər ˈfɔːrkæst/</span>
+                    <span class="pronunciation-text">(UÉ-dhãr FÓR-kést)</span>
+                    <span class="translation-text">Previsão do tempo</span>
+                </div>
+            </div>
+
+            <div class="vocab-item">
+                <div class="vocab-word">
+                    <span class="example-word">Rain</span> <button class="audio-btn" onclick="playAudio('Rain')">🔊</button>
+                </div>
+                <div class="vocab-details">
+                    <span class="ipa-text">/reɪn/</span>
+                    <span class="pronunciation-text">(RÊIN)</span>
+                    <span class="translation-text">Chuva</span>
+                </div>
+            </div>
+
+            <div class="vocab-item">
+                <div class="vocab-word">
+                    <span class="example-word">Snow</span> <button class="audio-btn" onclick="playAudio('Snow')">🔊</button>
+                </div>
+                <div class="vocab-details">
+                    <span class="ipa-text">/snoʊ/</span>
+                    <span class="pronunciation-text">(SNÔU)</span>
+                    <span class="translation-text">Neve</span>
+                </div>
+            </div>
+
+            <div class="vocab-item">
+                <div class="vocab-word">
+                    <span class="example-word">Sunny</span> <button class="audio-btn" onclick="playAudio('Sunny')">🔊</button>
+                </div>
+                <div class="vocab-details">
+                    <span class="ipa-text">/ˈsʌni/</span>
+                    <span class="pronunciation-text">(SÂ-ni)</span>
+                    <span class="translation-text">Ensolarado</span>
+                </div>
+            </div>
+
+            <div class="vocab-item">
+                <div class="vocab-word">
+                    <span class="example-word">Cloudy</span> <button class="audio-btn" onclick="playAudio('Cloudy')">🔊</button>
+                </div>
+                <div class="vocab-details">
+                    <span class="ipa-text">/ˈklaʊdi/</span>
+                    <span class="pronunciation-text">(CLÁU-di)</span>
+                    <span class="translation-text">Nublado</span>
+                </div>
+            </div>
+
+            <div class="vocab-item">
+                <div class="vocab-word">
+                    <span class="example-word">Windy</span> <button class="audio-btn" onclick="playAudio('Windy')">🔊</button>
+                </div>
+                <div class="vocab-details">
+                    <span class="ipa-text">/ˈwɪndi/</span>
+                    <span class="pronunciation-text">(UÊN-di)</span>
+                    <span class="translation-text">Com vento</span>
+                </div>
+            </div>
+
+            <div class="vocab-item">
+                <div class="vocab-word">
+                    <span class="example-word">Complicated</span> <button class="audio-btn" onclick="playAudio('Complicated')">🔊</button>
+                </div>
+                <div class="vocab-details">
+                    <span class="ipa-text">/ˈkɑːmplɪkeɪtɪd/</span>
+                    <span class="pronunciation-text">(CÓM-plĩ-kei-têd)</span>
+                    <span class="translation-text">Complicado</span>
+                </div>
+            </div>
+
+            <div class="vocab-item">
+                <div class="vocab-word">
+                    <span class="example-word">Simple</span> <button class="audio-btn" onclick="playAudio('Simple')">🔊</button>
+                </div>
+                <div class="vocab-details">
+                    <span class="ipa-text">/ˈsɪmpl/</span>
+                    <span class="pronunciation-text">(SÊM-põl)</span>
+                    <span class="translation-text">Simples</span>
+                </div>
+            </div>
+
+            <div class="vocab-item">
+                <div class="vocab-word">
+                    <span class="example-word">Difficult</span> <button class="audio-btn" onclick="playAudio('Difficult')">🔊</button>
+                </div>
+                <div class="vocab-details">
+                    <span class="ipa-text">/ˈdɪfɪkəlt/</span>
+                    <span class="pronunciation-text">(DÊ-fĩ-cãlt)</span>
+                    <span class="translation-text">Difícil</span>
+                </div>
+            </div>
+
+            <div class="vocab-item">
+                <div class="vocab-word">
+                    <span class="example-word">Easy</span> <button class="audio-btn" onclick="playAudio('Easy')">🔊</button>
+                </div>
+                <div class="vocab-details">
+                    <span class="ipa-text">/ˈiːzi/</span>
+                    <span class="pronunciation-text">(ÍI-zi)</span>
+                    <span class="translation-text">Fácil</span>
+                </div>
+            </div>
+
+            <div class="vocab-item">
+                <div class="vocab-word">
+                    <span class="example-word">Important</span> <button class="audio-btn" onclick="playAudio('Important')">🔊</button>
+                </div>
+                <div class="vocab-details">
+                    <span class="ipa-text">/ɪmˈpɔːrtnt/</span>
+                    <span class="pronunciation-text">(em-PÓR-tãnt)</span>
+                    <span class="translation-text">Importante</span>
+                </div>
+            </div>
+
+            <div class="vocab-item">
+                <div class="vocab-word">
+                    <span class="example-word">Certain</span> <button class="audio-btn" onclick="playAudio('Certain')">🔊</button>
+                </div>
+                <div class="vocab-details">
+                    <span class="ipa-text">/ˈsɜːrtn/</span>
+                    <span class="pronunciation-text">(SÃR-tãn)</span>
+                    <span class="translation-text">Certo (seguro)</span>
+                </div>
+            </div>
+
+            <div class="vocab-item">
+                <div class="vocab-word">
+                    <span class="example-word">Uncertain</span> <button class="audio-btn" onclick="playAudio('Uncertain')">🔊</button>
+                </div>
+                <div class="vocab-details">
+                    <span class="ipa-text">/ʌnˈsɜːrtn/</span>
+                    <span class="pronunciation-text">(ãn-SÃR-tãn)</span>
+                    <span class="translation-text">Incerto</span>
+                </div>
+            </div>
+
+            <div class="vocab-item">
+                <div class="vocab-word">
+                    <span class="example-word">Arrive</span> <button class="audio-btn" onclick="playAudio('Arrive')">🔊</button>
+                </div>
+                <div class="vocab-details">
+                    <span class="ipa-text">/əˈraɪv/</span>
+                    <span class="pronunciation-text">(ã-RÁIV)</span>
+                    <span class="translation-text">Chegar</span>
+                </div>
+            </div>
+
+            <div class="vocab-item">
+                <div class="vocab-word">
+                    <span class="example-word">Leave</span> <button class="audio-btn" onclick="playAudio('Leave')">🔊</button>
+                </div>
+                <div class="vocab-details">
+                    <span class="ipa-text">/liːv/</span>
+                    <span class="pronunciation-text">(LÍIV)</span>
+                    <span class="translation-text">Sair / Partir</span>
+                </div>
+            </div>
+
+            <div class="vocab-item">
+                <div class="vocab-word">
+                    <span class="example-word">Enter</span> <button class="audio-btn" onclick="playAudio('Enter')">🔊</button>
+                </div>
+                <div class="vocab-details">
+                    <span class="ipa-text">/ˈentər/</span>
+                    <span class="pronunciation-text">(ÉN-tãr)</span>
+                    <span class="translation-text">Entrar</span>
+                </div>
+            </div>
+
+            <div class="vocab-item">
+                <div class="vocab-word">
+                    <span class="example-word">Offer</span> <button class="audio-btn" onclick="playAudio('Offer')">🔊</button>
+                </div>
+                <div class="vocab-details">
+                    <span class="ipa-text">/ˈɔːfər/</span>
+                    <span class="pronunciation-text">(Ó-fãr)</span>
+                    <span class="translation-text">Oferecer</span>
+                </div>
+            </div>
+
+            <div class="vocab-item">
+                <div class="vocab-word">
+                    <span class="example-word">Proceed</span> <button class="audio-btn" onclick="playAudio('Proceed')">🔊</button>
+                </div>
+                <div class="vocab-details">
+                    <span class="ipa-text">/prəˈsiːd/</span>
+                    <span class="pronunciation-text">(prõ-SÍID)</span>
+                    <span class="translation-text">Prosseguir</span>
+                </div>
+            </div>
+
+            <div class="vocab-item">
+                <div class="vocab-word">
+                    <span class="example-word">Interrupt</span> <button class="audio-btn" onclick="playAudio('Interrupt')">🔊</button>
+                </div>
+                <div class="vocab-details">
+                    <span class="ipa-text">/ˌɪntəˈrʌpt/</span>
+                    <span class="pronunciation-text">(în-tã-RÂPT)</span>
+                    <span class="translation-text">Interromper</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Extra Task -->
+    <div class="tarefa-extra">
+        <h4>Tarefa Extra: Reading and Comprehension 🧠</h4>
+        <h4>Translate the Text</h4>
+        <p>Read the text below about planning a weekend trip. Pay attention to how "may" and "might" are used to discuss possibilities and plans. Then, try to translate it into Portuguese.</p>
+        <p>
+            Sarah and Tom were planning a weekend trip to the mountains. "I've checked the weather forecast," Sarah said, looking at her phone. "It says there's a 40% chance of rain on Saturday. It <strong>may</strong> be sunny in the morning, but the afternoon <strong>might</strong> get cloudy."
+            <br><br>
+            "Hmm, that's a bit uncertain," Tom replied. "If it rains, we <strong>might not</strong> be able to go hiking on the main trail. It <strong>might</strong> be too muddy and slippery. We <strong>may</strong> need to consider an alternative plan."
+            <br><br>
+            "That's a good point," Sarah agreed. "We <strong>might</strong> visit the local museum instead if the weather is bad. I read it has some interesting exhibits. Or we <strong>may</strong> just stay in the cabin and read by the fireplace."
+            <br><br>
+            Tom looked thoughtful. "That sounds cozy. I'll bring a couple of books, just in case. What about dinner? The local restaurant <strong>may</strong> be fully booked on a Saturday night. We <strong>might</strong> need to make a reservation."
+            <br><br>
+            "I can call them now," Sarah offered. She picked up her phone and spoke politely, "Hello, <strong>may</strong> I make a dinner reservation for two for Saturday evening, please?" After a short pause, she nodded. "Great, thank you."
+            <br><br>
+            She turned back to Tom. "All set for 7 PM. At least our dinner plan is certain! Now, regarding the hike, even if it's not raining, the path <strong>might</strong> still be wet from previous showers. We <strong>may</strong> want to pack our waterproof boots regardless."
+            <br><br>
+            "Excellent idea," said Tom. "This trip <strong>might</strong> not go exactly as planned, but I think it will be a great adventure anyway. There are so many things we <strong>may</strong> discover."
+            <br><br>
+            Sarah smiled. "I agree. The uncertainty is part of the fun. It <strong>might</strong> even be the most memorable trip we've ever had."
+        </p>
+
+        <div style="margin-top: 20px;">
+            <strong>Quiz:</strong> According to the text, what is a potential alternative plan if they cannot go hiking?
+        </div>
+        <ul class="quiz-options">
+            <li>A) Go swimming in the lake.</li>
+            <li>B) Visit the local museum.</li>
+            <li>C) Go to the cinema.</li>
+            <li>D) Visit their friends in a nearby town.</li>
+            <li>E) Go shopping for souvenirs.</li>
+        </ul>
+        
+        <details class="gabarito">
+            <summary>Ver Gabarito do Quiz</summary>
+            <p><strong>Resposta Correta:</strong> B</p>
+        </details>
+    </div>
+
+    <!-- Continue Learning -->
+    <section>
+        <h3>Como Continuar Aprendendo? 🚀</h3>
+        <div class="nota-gramatical" style="border-left-color: #27ae60; background-color: #e6f7ef;">
+            <h4 style="color:#27ae60;">Dicas Práticas:</h4>
+            <ul class="exercise-list" style="list-style-type: disc;">
+                <li><strong>Situações Formais:</strong> Pense em situações de trabalho ou atendimento ao cliente. Como você pediria permissão educadamente usando "May I..."?</li>
+                <li><strong>Especule Sobre o Futuro:</strong> Olhe a previsão do tempo para amanhã ou pense em planos incertos. Forme frases com "It may..." ou "We might...".</li>
+                <li><strong>Considere Possibilidades:</strong> Ao enfrentar uma decisão ou um problema, pense nas diferentes possibilidades usando "may" e "might".</li>
+                <li><strong>Ouça Atentamente:</strong> Em filmes, séries ou notícias, observe como "may" e "might" são usados.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Exercises -->
+    <section>
+        <h3>Exercícios Práticos 📝</h3>
+        <div class="secao-exercicios card">
+            <h4>Parte 1: May ou Might? (Ou Ambos?)</h4>
+            <p>Complete as frases com "may", "might", ou "may/might" se ambos forem adequados.</p>
+            <ol class="exercise-list">
+                <li>It <span class="fill-in-blank">__________</span> snow later tonight, but the forecast is uncertain.</li>
+                <li><span class="fill-in-blank">__________</span> I ask you a personal question? (formal)</li>
+                <li>She <span class="fill-in-blank">__________</span> not be at the office today; she was feeling unwell.</li>
+                <li>We <span class="fill-in-blank">__________</span> go for a walk if the rain stops.</li>
+                <li>This new software <span class="fill-in-blank">__________</span> improve our productivity significantly.</li>
+                <li>He <span class="fill-in-blank">__________</span> have forgotten about our appointment.</li>
+            </ol>
+
+            <h4>Parte 2: Peça Permissão Formalmente</h4>
+            <p>Transforme os pedidos informais em pedidos formais usando "May I...?".</p>
+            <ol class="exercise-list">
+                <li>Can I use your computer? → <span class="fill-in-blank">__________</span>?</li>
+                <li>Can I have a glass of water? → <span class="fill-in-blank">__________</span>?</li>
+                <li>Can I leave early today? → <span class="fill-in-blank">__________</span>?</li>
+            </ol>
+
+            <details class="gabarito">
+                <summary>Ver Respostas dos Exercícios</summary>
+                <p><em>Respostas da Parte 1: 1. may/might, 2. May, 3. may/might, 4. may/might, 5. may/might, 6. might/may.</em></p>
+                <p><em>Respostas da Parte 2: 1. May I use your computer? 2. May I have a glass of water? 3. May I leave early today?</em></p>
+            </details>
+        </div>
+    </section>
+
+    <!-- Conclusion -->
+    <section>
+        <h3>Conclusão 🥳</h3>
+        <p>Parabéns por concluir a Aula 18! Você aprendeu a usar "may" para pedir permissão formalmente e "may" e "might" para falar sobre possibilidades presentes e futuras. Essas são ferramentas valiosas para se comunicar de forma educada e para expressar incerteza.</p>
+        <p>Continue praticando o uso desses verbos modais em diferentes contextos para se sentir cada vez mais confiante.</p>
+        <p>Na Aula 19: "Dando Ordens e Sugestões – O Imperativo", vamos aprender como dar instruções, ordens e fazer sugestões de forma direta. Até lá!</p>
+    </section>
+
+    <a href="#" class="nav-btn">⬅️ Voltar ao Menu</a>
+
+    <footer>
+        <p>Aula 18: Pedidos Formais e Possibilidades – "May" e "Might"</p>
+    </footer>
+
+</div>
+
+<script>
+    // Configuração do SpeechSynthesis para Mobile
+    let voices = [];
+    
+    // Função para carregar vozes
+    function loadVoices() { 
+        voices = window.speechSynthesis.getVoices(); 
+    }
+    
+    // Garantir carregamento assíncrono (especialmente para Chrome/Android)
+    if (window.speechSynthesis.onvoiceschanged !== undefined) {
+        window.speechSynthesis.onvoiceschanged = loadVoices;
+    }
+    
+    // Tentativa inicial de carregamento
+    loadVoices();
+
+    function playAudio(text) {
+        if ('speechSynthesis' in window) {
+            // Cancela áudio anterior para não sobrepor
+            window.speechSynthesis.cancel();
+            
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'en-US'; 
+            utterance.rate = 0.85; // Velocidade um pouco mais lenta para estudo
+
+            // Se vozes ainda não carregaram (edge case), tenta carregar agora
+            if (voices.length === 0) voices = window.speechSynthesis.getVoices();
+            
+            // Lógica de seleção de voz (Prioridade: Google/Premium > Nativa US > Qualquer EN)
+            const targetVoice = voices.find(voice => 
+                (voice.name.includes('Google') || voice.name.includes('Premium') || voice.name.includes('Enhanced')) && voice.lang === 'en-US'
+            ) || voices.find(voice => 
+                voice.lang === 'en-US'
+            ) || voices.find(voice => 
+                voice.lang.startsWith('en')
+            );
+
+            if (targetVoice) {
+                utterance.voice = targetVoice;
+                console.log("Voz selecionada: " + targetVoice.name);
+            }
+
+            window.speechSynthesis.speak(utterance);
+        } else {
+            alert("Desculpe, seu navegador não suporta áudio nativo.");
+        }
+    }
+</script>
+
+</body>
+</html>
