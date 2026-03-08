@@ -4,55 +4,63 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Aula 18: Pedidos Formais e Possibilidades – "May" e "Might"</title>
+    
+    <!-- Fontes do Google -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
     <style>
         /* --- RESET E BASE --- */
-        * { box-sizing: border-box; }
+        * { 
+            box-sizing: border-box; 
+            margin: 0;
+            padding: 0;
+        }
+        
         body {
             font-family: 'Inter', sans-serif;
             line-height: 1.6;
-            margin: 0;
-            padding: 0;
             background-color: #f0f2f5;
             color: #333;
             -webkit-font-smoothing: antialiased;
+            padding: 20px 10px;
         }
 
         .container {
             max-width: 800px;
             margin: 0 auto;
             background: #fff;
-            padding: 20px 15px;
-            min-height: 100vh;
-            box-shadow: 0 0 20px rgba(0,0,0,0.05);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
         }
 
         /* --- TIPOGRAFIA --- */
         h1 {
             color: #2c3e50;
             text-align: center;
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             margin-bottom: 25px;
             padding-bottom: 15px;
             border-bottom: 3px solid #3498db;
             line-height: 1.3;
         }
         
-        h2, h3, h4 { color: #2c3e50; margin-top: 25px; }
-        h3 { color: #34495e; font-size: 1.25rem; border-left: 4px solid #3498db; padding-left: 10px; }
-        h4 { color: #c0392b; font-size: 1.1rem; margin-bottom: 10px; }
+        h2 { color: #2c3e50; margin-top: 30px; margin-bottom: 15px; font-size: 1.5rem; }
+        h3 { color: #34495e; font-size: 1.25rem; border-left: 4px solid #3498db; padding-left: 10px; margin-top: 25px; margin-bottom: 15px; }
+        h4 { color: #c0392b; font-size: 1.1rem; margin-top: 20px; margin-bottom: 10px; }
         
-        p, li { font-size: 1rem; margin-bottom: 10px; }
+        p, li { font-size: 1rem; margin-bottom: 12px; color: #444; }
+        ul, ol { padding-left: 20px; margin-bottom: 15px; }
         
         .emoji-large { font-size: 1.5rem; }
         .emoji-small { font-size: 1.2rem; }
 
         /* --- DESTAQUES E CAIXAS --- */
         .theme-intro, .nota-gramatical, .nota-dica, .secao-exercicios, .extra-task {
-            padding: 15px;
-            margin: 15px 0;
+            padding: 20px;
+            margin: 20px 0;
             border-radius: 8px;
             border-left: 5px solid transparent;
         }
@@ -69,7 +77,7 @@
         code, .ipa-symbol {
             font-family: 'Roboto Mono', monospace;
             background-color: #f1f1f1;
-            padding: 2px 4px;
+            padding: 3px 6px;
             border-radius: 4px;
             color: #e74c3c;
             font-size: 0.9em;
@@ -80,7 +88,7 @@
             color: #27ae60;
             font-style: italic;
             font-size: 0.85em;
-            margin-top: 2px;
+            margin-top: 4px;
         }
 
         /* --- BOTÃO DE NAVEGAÇÃO --- */
@@ -90,13 +98,15 @@
             background-color: #34495e;
             color: white;
             text-align: center;
-            padding: 12px;
-            margin: 10px 0;
+            padding: 14px;
+            margin: 15px 0 25px 0;
             text-decoration: none;
             border-radius: 8px;
-            font-weight: bold;
+            font-weight: 600;
+            font-size: 1rem;
             border: none;
             cursor: pointer;
+            transition: background-color 0.3s ease;
         }
         .nav-btn:hover { background-color: #2c3e50; }
 
@@ -104,44 +114,50 @@
         .table-responsive-wrapper {
             width: 100%;
             overflow-x: auto;
-            margin-bottom: 20px;
+            -webkit-overflow-scrolling: touch;
+            margin-bottom: 25px;
             border-radius: 8px;
-            border: 1px solid #eee;
+            border: 1px solid #e0e0e0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
-            min-width: 100%; 
+            min-width: 500px; /* Garante que a tabela não esmague os dados no celular */
         }
 
         th {
             background-color: #34495e;
             color: white;
-            padding: 10px;
-            font-size: 0.9rem;
+            padding: 12px 15px;
+            font-size: 0.95rem;
             text-align: left;
+            font-weight: 600;
         }
 
         td {
-            padding: 12px 10px;
+            padding: 15px;
             border-bottom: 1px solid #eee;
-            vertical-align: top;
+            vertical-align: middle;
         }
 
-        tr:nth-child(even) { background-color: #f9f9f9; }
+        tr:nth-child(even) { background-color: #fafafa; }
+        tr:hover { background-color: #f1f5f9; }
 
         .details-cell {
             font-size: 0.9rem;
             color: #555;
+            line-height: 1.4;
         }
+        
         .details-translation {
             display: block;
-            margin-top: 6px;
-            padding-top: 6px;
+            margin-top: 8px;
+            padding-top: 8px;
             border-top: 1px dashed #ddd;
             color: #444;
-            font-weight: 500;
+            font-weight: 600;
         }
 
         /* --- BOTÃO DE ÁUDIO GERAL --- */
@@ -149,24 +165,25 @@
             background: none;
             border: none;
             cursor: pointer;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             vertical-align: middle;
-            margin-left: 5px;
-            padding: 0 5px;
+            margin-left: 8px;
+            padding: 5px;
+            border-radius: 50%;
+            transition: transform 0.1s;
         }
-        
+        .audio-btn-inline:active { transform: scale(0.9); }
+
         /* --- VOCABULÁRIO: GRID DE CARDS (Mobile First) --- */
         .vocab-grid {
             display: grid;
             grid-template-columns: 1fr;
             gap: 15px;
-            margin: 20px 0;
+            margin: 25px 0;
         }
 
         @media (min-width: 600px) {
-            .vocab-grid {
-                grid-template-columns: 1fr 1fr;
-            }
+            .vocab-grid { grid-template-columns: 1fr 1fr; }
         }
 
         .vocab-item {
@@ -177,10 +194,11 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
-            transition: transform 0.2s;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+            transition: transform 0.2s, box-shadow 0.2s;
         }
         
+        .vocab-item:hover { box-shadow: 0 4px 8px rgba(0,0,0,0.08); }
         .vocab-item:active { transform: scale(0.98); background-color: #fdfdfd; }
 
         .vocab-text {
@@ -205,14 +223,14 @@
             font-size: 0.8rem;
             color: #7f8c8d;
             text-transform: uppercase;
-            font-weight: 600;
+            font-weight: 700;
             letter-spacing: 0.5px;
             margin-top: 2px;
         }
 
         .audio-btn-round {
-            width: 40px;
-            height: 40px;
+            width: 45px;
+            height: 45px;
             border-radius: 50%;
             background-color: #3498db;
             color: white;
@@ -224,10 +242,12 @@
             cursor: pointer;
             flex-shrink: 0;
             margin-left: 10px;
-            box-shadow: 0 2px 5px rgba(52, 152, 219, 0.3);
+            box-shadow: 0 3px 6px rgba(52, 152, 219, 0.3);
+            transition: background-color 0.2s;
         }
         
-        .audio-btn-round:active { background-color: #2980b9; }
+        .audio-btn-round:hover { background-color: #2980b9; }
+        .audio-btn-round:active { transform: scale(0.95); }
 
         /* --- GABARITO E EXERCÍCIOS --- */
         .fill-in-blank {
@@ -245,47 +265,68 @@
             background: #f8f9fa;
             border: 1px solid #ddd;
             border-radius: 8px;
-            padding: 10px;
+            overflow: hidden;
         }
         
         details.gabarito summary {
             font-weight: bold;
             cursor: pointer;
             color: #2c3e50;
-            padding: 10px;
+            padding: 15px;
             list-style: none;
+            background-color: #f1f5f9;
+            transition: background-color 0.2s;
         }
         
-        details.gabarito summary::after { content: " 👇"; }
+        details.gabarito summary:hover { background-color: #e2e8f0; }
+        details.gabarito summary::after { content: " 👇"; float: right; }
         details.gabarito[open] summary::after { content: " 👆"; }
 
         .gabarito-content {
             padding: 15px;
             border-top: 1px solid #ddd;
             color: #555;
+            background-color: #fff;
         }
 
         .quiz-options {
             list-style-type: lower-alpha;
             padding-left: 20px;
         }
+        
+        hr {
+            border: 0;
+            height: 1px;
+            background: #ddd;
+            margin: 25px 0;
+        }
+
+        /* --- MEDIA QUERIES PARA CELULARES PEQUENOS --- */
+        @media (max-width: 480px) {
+            .container { padding: 15px; border-radius: 8px; }
+            h1 { font-size: 1.4rem; }
+            h2 { font-size: 1.3rem; }
+            td { padding: 10px; }
+        }
     </style>
 </head>
 <body>
-
     <div class="container">
+        
         <!-- Botão Navegação Topo -->
-        <button class="nav-btn" onclick="window.location.href='https://espaco-liberdade.github.io/inglesipa/'>⬅ Voltar ao Menu</button>
-
-        <h1>Aula 18: Pedidos Formais e Possibilidades – "May" e "Might" <span class="emoji-large">🧐🎩</span><br><span style="font-size: 0.8em; font-weight: normal;">(Formal Requests and Possibilities – "May" and "Might")</span></h1>
-
+        <button class="nav-btn" onclick="window.location.href='https://espaco-liberdade.github.io/inglesipa/'">⬅ Voltar ao Menu</button>
+        
+        <h1>Aula 18: Pedidos Formais e Possibilidades – "May" e "Might" <span class="emoji-large">🧐🎩</span><br>
+            <span style="font-size: 0.7em; font-weight: normal; color: #555;">(Formal Requests and Possibilities – "May" and "Might")</span>
+        </h1>
+        
         <div class="theme-intro">
             <p>Olá! Bem-vindo(a) à Aula 18! <span class="emoji-small">✨</span></p>
             <p>Continuando nossa exploração dos verbos modais, hoje vamos focar em <strong>"may"</strong> e <strong>"might"</strong>. Aprenderemos a usá-los para fazer <strong>pedidos formais</strong>, especialmente em <strong>situações de trabalho ou atendimento ao cliente</strong>, e para <strong>especular sobre possibilidades futuras</strong>. Prepare-se para adicionar um toque de formalidade e expressar incertezas com elegância! <span class="emoji-small">👔🤔🌦️</span></p>
         </div>
-
+        
         <h2>18. Formalidade e Incerteza com "May" e "Might"</h2>
-
+        
         <section id="may-formal-permission">
             <h3>18.1 Permissão Formal: "May I...?" (Seria possível...?) <span class="emoji-small">🙋‍♂️</span></h3>
             <p>Enquanto "Can I...?" é usado para pedir permissão de forma informal (como vimos na Aula 17), <strong>"May I...?"</strong> é a forma mais <strong>formal e educada</strong> de pedir permissão.</p>
@@ -388,77 +429,62 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- 1 -->
                         <tr>
                             <td>The client <span class="example-word">may arrive</span> a bit late for the meeting. <button class="audio-btn-inline" onclick="playAudio('The client may arrive a bit late for the meeting.')">🔊</button></td>
                             <td class="details-cell"><span class="ipa-symbol">/ðə ˈklaɪənt meɪ əˈraɪv ə bɪt leɪt fər ðə ˈmiːtɪŋ/</span><br><span class="character-portuguese-phonetics">(dhã CLÁI-ãnt mêi ã-RÁIV ã BÊT LÊIT fór dhã MÍI-rin)</span><span class="details-translation">O cliente pode chegar um pouco atrasado para a reunião.</span></td>
                         </tr>
-                        <!-- 2 -->
                         <tr>
                             <td>We <span class="example-word">might need</span> more time to finish this report. <button class="audio-btn-inline" onclick="playAudio('We might need more time to finish this report.')">🔊</button></td>
                             <td class="details-cell"><span class="ipa-symbol">/wiː maɪt niːd mɔːr taɪm tə ˈfɪnɪʃ ðɪs rɪˈpɔːrt/</span><br><span class="character-portuguese-phonetics">(UÍI MÁIT NÍID MÓR TÁIM tã FÊ-nêsh DHÊS ri-PÓRT)</span><span class="details-translation">Nós talvez precisemos de mais tempo para terminar este relatório.</span></td>
                         </tr>
-                        <!-- 3 -->
                         <tr>
                             <td>This new strategy <span class="example-word">may improve</span> our sales. <button class="audio-btn-inline" onclick="playAudio('This new strategy may improve our sales.')">🔊</button></td>
                             <td class="details-cell"><span class="ipa-symbol">/ðɪs nuː ˈstrætədʒi meɪ ɪmˈpruːv aʊər seɪlz/</span><br><span class="character-portuguese-phonetics">(DHÊS NÚU STRÉ-tã-dji mêi em-PRÚUV áu-ãr SÊILZ)</span><span class="details-translation">Esta nova estratégia pode melhorar nossas vendas.</span></td>
                         </tr>
-                        <!-- 4 -->
                         <tr>
                             <td>He <span class="example-word">might not accept</span> the job offer. <button class="audio-btn-inline" onclick="playAudio('He might not accept the job offer.')">🔊</button></td>
                             <td class="details-cell"><span class="ipa-symbol">/hiː maɪt nɑːt əkˈsept ðə dʒɑːb ˈɔːfər/</span><br><span class="character-portuguese-phonetics">(RÍI MÁIT NÓT ãk-SÉPT dhã DJÓB Ó-fãr)</span><span class="details-translation">Pode ser que ele não aceite a oferta de emprego.</span></td>
                         </tr>
-                        <!-- 5 -->
                         <tr>
                             <td>The weather forecast says it <span class="example-word">may be</span> windy tomorrow. <button class="audio-btn-inline" onclick="playAudio('The weather forecast says it may be windy tomorrow.')">🔊</button></td>
                             <td class="details-cell"><span class="ipa-symbol">/ðə ˈweðər ˈfɔːrkæst sez ɪt meɪ biː ˈwɪndi təˈmɑːroʊ/</span><br><span class="character-portuguese-phonetics">(dhã UÉ-dhãr FÓR-kést SÉZ êt mêi bíi UÊN-di tã-MÓ-rôu)</span><span class="details-translation">A previsão do tempo diz que pode ventar amanhã.</span></td>
                         </tr>
-                        <!-- 6 -->
                         <tr>
                             <td>She <span class="example-word">might call</span> later to discuss the project details. <button class="audio-btn-inline" onclick="playAudio('She might call later to discuss the project details.')">🔊</button></td>
                             <td class="details-cell"><span class="character-portuguese-phonetics">(XÍI MÁIT CÓL LÊI-tãr tã dĩ-SCÂS dhã PRÓ-djekt dĩ-TÊI-õlz)</span><span class="details-translation">Pode ser que ela ligue mais tarde para discutir os detalhes do projeto.</span></td>
                         </tr>
-                        <!-- 7 -->
                         <tr>
                             <td>We <span class="example-word">may have</span> a meeting with the new clients next week. <button class="audio-btn-inline" onclick="playAudio('We may have a meeting with the new clients next week.')">🔊</button></td>
                             <td class="details-cell"><span class="ipa-symbol">/wiː meɪ hæv ə ˈmiːtɪŋ wɪð ðə nuː ˈklaɪənts nekst wiːk/</span><br><span class="character-portuguese-phonetics">(UÍI mêi RÉV ã MÍI-rin uêDH dhã NÚU CLÁI-ãnts NÉKST UÍIK)</span><span class="details-translation">Nós talvez tenhamos uma reunião com os novos clientes na próxima semana.</span></td>
                         </tr>
-                        <!-- 8 -->
                         <tr>
                             <td>This problem <span class="example-word">might be</span> more complicated than we think. <button class="audio-btn-inline" onclick="playAudio('This problem might be more complicated than we think.')">🔊</button></td>
                             <td class="details-cell"><span class="ipa-symbol">/ðɪs ˈprɑːbləm maɪt biː mɔːr ˈkɑːmplɪkeɪtɪd ðæn wiː θɪŋk/</span><br><span class="character-portuguese-phonetics">(DHÊS PRÓ-blãm MÁIT bíi MÓR CÓM-plĩ-kei-têd DHÉN uíi THÊNK)</span><span class="details-translation">Este problema pode ser mais complicado do que pensamos.</span></td>
                         </tr>
-                        <!-- 9 -->
                         <tr>
                             <td>They <span class="example-word">may not finish</span> the report by the deadline. <button class="audio-btn-inline" onclick="playAudio('They may not finish the report by the deadline.')">🔊</button></td>
                             <td class="details-cell"><span class="ipa-symbol">/ðeɪ meɪ nɑːt ˈfɪnɪʃ ðə rɪˈpɔːrt baɪ ðə ˈdedlaɪn/</span><br><span class="character-portuguese-phonetics">(DHÊI mêi NÓT FÊ-nêsh dhã ri-PÓRT bái dhã DÉD-láin)</span><span class="details-translation">Pode ser que eles não terminem o relatório até o prazo.</span></td>
                         </tr>
-                        <!-- 10 -->
                         <tr>
                             <td>I <span class="example-word">might take</span> a different approach to this task. <button class="audio-btn-inline" onclick="playAudio('I might take a different approach to this task.')">🔊</button></td>
                             <td class="details-cell"><span class="ipa-symbol">/aɪ maɪt teɪk ə ˈdɪfrənt əˈproʊtʃ tə ðɪs tæsk/</span><br><span class="character-portuguese-phonetics">(ÁI MÁIT TÊIK ã DÊ-frãnt ã-PRÔUTCH tã DHÊS TÉSK)</span><span class="details-translation">Eu talvez adote uma abordagem diferente para esta tarefa.</span></td>
                         </tr>
-                        <!-- 11 -->
                         <tr>
                             <td>The package <span class="example-word">may arrive</span> this afternoon. <button class="audio-btn-inline" onclick="playAudio('The package may arrive this afternoon.')">🔊</button></td>
                             <td class="details-cell"><span class="ipa-symbol">/ðə ˈpækɪdʒ meɪ əˈraɪv ðɪs ˌæftərˈnuːn/</span><br><span class="character-portuguese-phonetics">(dhã PÉ-kêdj mêi ã-RÁIV dhês éf-tãr-NÚUN)</span><span class="details-translation">O pacote pode chegar esta tarde.</span></td>
                         </tr>
-                        <!-- 12 -->
                         <tr>
                             <td>He <span class="example-word">might be</span> in a meeting right now. <button class="audio-btn-inline" onclick="playAudio('He might be in a meeting right now.')">🔊</button></td>
                             <td class="details-cell"><span class="ipa-symbol">/hiː maɪt biː ɪn ə ˈmiːtɪŋ raɪt naʊ/</span><br><span class="character-portuguese-phonetics">(RÍI MÁIT bíi ên ã MÍI-rin ráit NÁU)</span><span class="details-translation">Ele pode estar em uma reunião agora.</span></td>
                         </tr>
-                        <!-- 13 -->
                         <tr>
                             <td>You <span class="example-word">might find</span> the keys on the kitchen counter. <button class="audio-btn-inline" onclick="playAudio('You might find the keys on the kitchen counter.')">🔊</button></td>
                             <td class="details-cell"><span class="ipa-symbol">/juː maɪt faɪnd ðə kiːz ɑːn ðə ˈkɪtʃən ˈkaʊntər/</span><br><span class="character-portuguese-phonetics">(IÚU MÁIT FÁIND dhã KÍIZ ón dhã KÊ-tchãn CÁUN-tãr)</span><span class="details-translation">Você talvez encontre as chaves no balcão da cozinha.</span></td>
                         </tr>
-                        <!-- 14 -->
                         <tr>
                             <td>This store <span class="example-word">may have</span> what you are looking for. <button class="audio-btn-inline" onclick="playAudio('This store may have what you are looking for.')">🔊</button></td>
                             <td class="details-cell"><span class="ipa-symbol">/ðɪs stɔːr meɪ hæv wʌt juː ɑːr ˈlʊkɪŋ fɔːr/</span><br><span class="character-portuguese-phonetics">(DHÊS STÓR mêi RÉV uót iúu ár LÚ-kin fór)</span><span class="details-translation">Esta loja pode ter o que você está procurando.</span></td>
                         </tr>
-                        <!-- 15 -->
                         <tr>
                             <td>I <span class="example-word">might go</span> to bed early tonight. <button class="audio-btn-inline" onclick="playAudio('I might go to bed early tonight.')">🔊</button></td>
                             <td class="details-cell"><span class="ipa-symbol">/aɪ maɪt ɡoʊ tə bed ˈɜːrli təˈnaɪt/</span><br><span class="character-portuguese-phonetics">(ÁI MÁIT GÔU tã BÉD ÃR-li tã-NÁIT)</span><span class="details-translation">Talvez eu vá para a cama cedo esta noite.</span></td>
@@ -477,77 +503,62 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- 1 -->
                         <tr>
                             <td><span class="example-word">May I</span> have your attention, please? <button class="audio-btn-inline" onclick="playAudio('May I have your attention, please?')">🔊</button></td>
                             <td class="details-cell"><span class="ipa-symbol">/meɪ aɪ hæv jɔːr əˈtenʃn pliːz/</span><br><span class="character-portuguese-phonetics">(MÊI ái RÉV iór ã-TÉN-shãn, PLÍIZ?)</span><span class="details-translation">Posso ter sua atenção, por favor?</span></td>
                         </tr>
-                        <!-- 2 -->
                         <tr>
                             <td><span class="example-word">May I</span> speak to the manager? <button class="audio-btn-inline" onclick="playAudio('May I speak to the manager?')">🔊</button></td>
                             <td class="details-cell"><span class="ipa-symbol">/meɪ aɪ spiːk tə ðə ˈmænɪdʒər/</span><br><span class="character-portuguese-phonetics">(MÊI ái SPÍIK tã dhã MÉ-nĩ-djãr?)</span><span class="details-translation">Posso falar com o gerente?</span></td>
                         </tr>
-                        <!-- 3 -->
                         <tr>
                             <td><span class="example-word">May I</span> suggest an alternative? <button class="audio-btn-inline" onclick="playAudio('May I suggest an alternative?')">🔊</button></td>
                             <td class="details-cell"><span class="ipa-symbol">/meɪ aɪ səˈdʒest ən ɔːlˈtɜːrnətɪv/</span><br><span class="character-portuguese-phonetics">(MÊI ái sã-DJÉST ãn ól-TÃR-nã-têv?)</span><span class="details-translation">Posso sugerir uma alternativa?</span></td>
                         </tr>
-                        <!-- 4 -->
                         <tr>
                             <td><span class="example-word">May I</span> see the report? <button class="audio-btn-inline" onclick="playAudio('May I see the report?')">🔊</button></td>
                             <td class="details-cell"><span class="ipa-symbol">/meɪ aɪ siː ðə rɪˈpɔːrt/</span><br><span class="character-portuguese-phonetics">(MÊI ái SÍI dhã ri-PÓRT?)</span><span class="details-translation">Posso ver o relatório?</span></td>
                         </tr>
-                        <!-- 5 -->
                         <tr>
                             <td><span class="example-word">May we</span> enter the room now? <button class="audio-btn-inline" onclick="playAudio('May we enter the room now?')">🔊</button></td>
                             <td class="details-cell"><span class="ipa-symbol">/meɪ wiː ˈentər ðə ruːm naʊ/</span><br><span class="character-portuguese-phonetics">(MÊI uíi ÉN-tãr dhã RÚUM NÁU?)</span><span class="details-translation">Podemos entrar na sala agora?</span></td>
                         </tr>
-                        <!-- 6 -->
                         <tr>
                             <td><span class="example-word">May I</span> offer you some coffee? <button class="audio-btn-inline" onclick="playAudio('May I offer you some coffee?')">🔊</button></td>
                             <td class="details-cell"><span class="ipa-symbol">/meɪ aɪ ˈɔːfər juː sʌm ˈkɔːfi/</span><br><span class="character-portuguese-phonetics">(MÊI ái Ó-fãr iúu sâm CÓ-fi?)</span><span class="details-translation">Posso lhe oferecer um café?</span></td>
                         </tr>
-                        <!-- 7 -->
                         <tr>
                             <td><span class="example-word">May I</span> have a copy of this document? <button class="audio-btn-inline" onclick="playAudio('May I have a copy of this document?')">🔊</button></td>
                             <td class="details-cell"><span class="ipa-symbol">/meɪ aɪ hæv ə ˈkɑːpi əv ðɪs ˈdɑːkjəmənt/</span><br><span class="character-portuguese-phonetics">(MÊI ái RÉV ã CÓ-pi óv DHÊS DÓ-kiu-mãnt?)</span><span class="details-translation">Posso ter uma cópia deste documento?</span></td>
                         </tr>
-                        <!-- 8 -->
                         <tr>
                             <td><span class="example-word">May I</span> leave a message for Mr. Smith? <button class="audio-btn-inline" onclick="playAudio('May I leave a message for Mr. Smith?')">🔊</button></td>
                             <td class="details-cell"><span class="ipa-symbol">/meɪ aɪ liːv ə ˈmesɪdʒ fər ˈmɪstər smɪθ/</span><br><span class="character-portuguese-phonetics">(MÊI ái LÍIV ã MÉ-sêdj fór MÊS-tãr SMÊTH?)</span><span class="details-translation">Posso deixar uma mensagem para o Sr. Smith?</span></td>
                         </tr>
-                        <!-- 9 -->
                         <tr>
                             <td><span class="example-word">May I</span> know your name, please? <button class="audio-btn-inline" onclick="playAudio('May I know your name, please?')">🔊</button></td>
                             <td class="details-cell"><span class="ipa-symbol">/meɪ aɪ noʊ jɔːr neɪm pliːz/</span><br><span class="character-portuguese-phonetics">(MÊI ái NÔU iór NÊIM, PLÍIZ?)</span><span class="details-translation">Posso saber seu nome, por favor?</span></td>
                         </tr>
-                        <!-- 10 -->
                         <tr>
                             <td><span class="example-word">May I</span> sit here? <button class="audio-btn-inline" onclick="playAudio('May I sit here?')">🔊</button></td>
                             <td class="details-cell"><span class="ipa-symbol">/meɪ aɪ sɪt hɪr/</span><br><span class="character-portuguese-phonetics">(MÊI ái SÊT RÍIR?)</span><span class="details-translation">Posso me sentar aqui?</span></td>
                         </tr>
-                        <!-- 11 -->
                         <tr>
                             <td><span class="example-word">May I</span> interrupt for a moment? <button class="audio-btn-inline" onclick="playAudio('May I interrupt for a moment?')">🔊</button></td>
                             <td class="details-cell"><span class="ipa-symbol">/meɪ aɪ ˌɪntəˈrʌpt fər ə ˈmoʊmənt/</span><br><span class="character-portuguese-phonetics">(MÊI ái în-tã-RÂPT fór ã MÔU-mãnt?)</span><span class="details-translation">Posso interromper por um momento?</span></td>
                         </tr>
-                        <!-- 12 -->
                         <tr>
                             <td><span class="example-word">May I</span> be excused? <button class="audio-btn-inline" onclick="playAudio('May I be excused?')">🔊</button></td>
                             <td class="details-cell"><span class="ipa-symbol">/meɪ aɪ biː ɪkˈskjuːzd/</span><br><span class="character-portuguese-phonetics">(MÊI ái bíi êks-KIÚUZD?)</span><span class="details-translation">Posso me retirar? / Com licença?</span></td>
                         </tr>
-                        <!-- 13 -->
                         <tr>
                             <td><span class="example-word">May I</span> take your coat? <button class="audio-btn-inline" onclick="playAudio('May I take your coat?')">🔊</button></td>
                             <td class="details-cell"><span class="ipa-symbol">/meɪ aɪ teɪk jɔːr koʊt/</span><br><span class="character-portuguese-phonetics">(MÊI ái TÊIK iór CÔUT?)</span><span class="details-translation">Posso pegar seu casaco?</span></td>
                         </tr>
-                        <!-- 14 -->
                         <tr>
                             <td><span class="example-word">May we</span> proceed? <button class="audio-btn-inline" onclick="playAudio('May we proceed?')">🔊</button></td>
                             <td class="details-cell"><span class="ipa-symbol">/meɪ wiː prəˈsiːd/</span><br><span class="character-portuguese-phonetics">(MÊI uíi prõ-SÍID?)</span><span class="details-translation">Podemos prosseguir?</span></td>
                         </tr>
-                        <!-- 15 -->
                         <tr>
                             <td><span class="example-word">May I</span> confirm the details with you? <button class="audio-btn-inline" onclick="playAudio('May I confirm the details with you?')">🔊</button></td>
                             <td class="details-cell"><span class="ipa-symbol">/meɪ aɪ kənˈfɜːrm ðə dɪˈteɪlz wɪθ juː/</span><br><span class="character-portuguese-phonetics">(MÊI ái cãn-FÃRM dhã dĩ-TÊI-õlz uêth IÚU?)</span><span class="details-translation">Posso confirmar os detalhes com você?</span></td>
@@ -596,24 +607,20 @@
             <h3>Tarefa Extra ✍️</h3>
             <h4>Translate the Text</h4>
             <p>Read the text below about planning a weekend trip. Pay attention to how "may" and "might" are used to discuss possibilities and plans. Then, try to translate it into Portuguese.</p>
-            <p>
-                Sarah and Tom were planning a weekend trip to the mountains. "I've checked the weather forecast," Sarah said, looking at her phone. "It says there's a 40% chance of rain on Saturday. It <strong>may</strong> be sunny in the morning, but the afternoon <strong>might</strong> get cloudy."
-                <br><br>
-                "Hmm, that's a bit uncertain," Tom replied. "If it rains, we <strong>might not</strong> be able to go hiking on the main trail. It <strong>might</strong> be too muddy and slippery. We <strong>may</strong> need to consider an alternative plan."
-                <br><br>
-                "That's a good point," Sarah agreed. "We <strong>might</strong> visit the local museum instead if the weather is bad. I read it has some interesting exhibits. Or we <strong>may</strong> just stay in the cabin and read by the fireplace."
-                <br><br>
-                Tom looked thoughtful. "That sounds cozy. I'll bring a couple of books, just in case. What about dinner? The local restaurant <strong>may</strong> be fully booked on a Saturday night. We <strong>might</strong> need to make a reservation."
-                <br><br>
-                "I can call them now," Sarah offered. She picked up her phone and spoke politely, "Hello, <strong>may</strong> I make a dinner reservation for two for Saturday evening, please?" After a short pause, she nodded. "Great, thank you."
-                <br><br>
-                She turned back to Tom. "All set for 7 PM. At least our dinner plan is certain! Now, regarding the hike, even if it's not raining, the path <strong>might</strong> still be wet from previous showers. We <strong>may</strong> want to pack our waterproof boots regardless."
-                <br><br>
-                "Excellent idea," said Tom. "This trip <strong>might</strong> not go exactly as planned, but I think it will be a great adventure anyway. There are so many things we <strong>may</strong> discover."
-                <br><br>
-                Sarah smiled. "I agree. The uncertainty is part of the fun. It <strong>might</strong> even be the most memorable trip we've ever had."
-            </p>
+            
+            <div style="background: white; padding: 20px; border-radius: 8px; border: 1px solid #eee;">
+                <p>Sarah and Tom were planning a weekend trip to the mountains. "I've checked the weather forecast," Sarah said, looking at her phone. "It says there's a 40% chance of rain on Saturday. It <strong>may</strong> be sunny in the morning, but the afternoon <strong>might</strong> get cloudy."</p>
+                <p>"Hmm, that's a bit uncertain," Tom replied. "If it rains, we <strong>might not</strong> be able to go hiking on the main trail. It <strong>might</strong> be too muddy and slippery. We <strong>may</strong> need to consider an alternative plan."</p>
+                <p>"That's a good point," Sarah agreed. "We <strong>might</strong> visit the local museum instead if the weather is bad. I read it has some interesting exhibits. Or we <strong>may</strong> just stay in the cabin and read by the fireplace."</p>
+                <p>Tom looked thoughtful. "That sounds cozy. I'll bring a couple of books, just in case. What about dinner? The local restaurant <strong>may</strong> be fully booked on a Saturday night. We <strong>might</strong> need to make a reservation."</p>
+                <p>"I can call them now," Sarah offered. She picked up her phone and spoke politely, "Hello, <strong>may</strong> I make a dinner reservation for two for Saturday evening, please?" After a short pause, she nodded. "Great, thank you."</p>
+                <p>She turned back to Tom. "All set for 7 PM. At least our dinner plan is certain! Now, regarding the hike, even if it's not raining, the path <strong>might</strong> still be wet from previous showers. We <strong>may</strong> want to pack our waterproof boots regardless."</p>
+                <p>"Excellent idea," said Tom. "This trip <strong>might</strong> not go exactly as planned, but I think it will be a great adventure anyway. There are so many things we <strong>may</strong> discover."</p>
+                <p>Sarah smiled. "I agree. The uncertainty is part of the fun. It <strong>might</strong> even be the most memorable trip we've ever had."</p>
+            </div>
+            
             <hr>
+            
             <h4>Quiz</h4>
             <p>According to the text, what is a potential alternative plan if they cannot go hiking?</p>
             <ol class="quiz-options">
@@ -623,6 +630,7 @@
                 <li>Visit their friends in a nearby town.</li>
                 <li>Go shopping for souvenirs.</li>
             </ol>
+            
             <details class="gabarito">
                 <summary>Ver Resposta do Quiz</summary>
                 <div class="gabarito-content">
@@ -653,6 +661,7 @@
                     <li>Can I leave early today? → <span class="fill-in-blank"></span>?</li>
                 </ol>
             </div>
+            
             <details class="gabarito">
                 <summary>Ver Gabarito dos Exercícios</summary>
                 <div class="gabarito-content">
@@ -668,7 +677,7 @@
             <p>Continue praticando o uso desses verbos modais em diferentes contextos para se sentir cada vez mais confiante.</p>
             <p>Na Aula 19: "Inglês para o Dia a Dia com Crianças – O Imperativo", vamos aprender como dar instruções, ordens e fazer sugestões de forma direta. Até lá!</p>
         </section>
-
+        
         <!-- Botão Navegação Rodapé -->
         <button class="nav-btn" onclick="window.location.href='https://espaco-liberdade.github.io/inglesipa/'">⬅ Voltar ao Menu</button>
     </div>
@@ -689,7 +698,7 @@
 
         function playAudio(text) {
             if ('speechSynthesis' in window) {
-                window.speechSynthesis.cancel();
+                window.speechSynthesis.cancel(); // Para áudios anteriores
 
                 const utterance = new SpeechSynthesisUtterance(text);
                 utterance.rate = 0.85; 
@@ -697,15 +706,18 @@
 
                 if (voices.length === 0) loadVoices();
 
+                // Tenta achar uma voz americana de alta qualidade
                 let targetVoice = voices.find(voice => 
                     (voice.name.includes('Google') || voice.name.includes('Premium') || voice.name.includes('Samantha')) 
                     && voice.lang.includes('en-US')
                 );
 
+                // Fallback para qualquer voz americana
                 if (!targetVoice) {
                     targetVoice = voices.find(voice => voice.lang === 'en-US');
                 }
 
+                // Fallback para qualquer voz em inglês
                 if (!targetVoice) {
                     targetVoice = voices.find(voice => voice.lang.startsWith('en'));
                 }
